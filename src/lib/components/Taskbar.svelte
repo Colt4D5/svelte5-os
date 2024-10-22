@@ -1,27 +1,31 @@
 <script lang="ts">
 	import { osState } from "$lib/osState.svelte";
-  function moveDock() {
-    let newPosition: 'bottom' | 'left' | 'right';
-    if (osState.dockPosition === 'bottom') newPosition = 'right';
-    else if (osState.dockPosition === 'right') newPosition = 'left';
-    else newPosition = 'bottom';
-    osState.changeDockPosition(newPosition);
+	import StartMenu from "./StartMenu.svelte";
+  
+  function toggleStartMenu() {
+    osState.startMenuOpen = !osState.startMenuOpen;
   }
 </script>
 
-<div id="taskbar" class={`absolute bg-slate-400 p-2 dock-position-${osState.dockPosition}`}>
-  <div class="p-4 border-[3px] border-black">Start</div>
+<div id="taskbar" class={`absolute bg-slate-400 p-2 rounded dock-position-${osState.dockPosition}`}>
+  <div id="start-menu-container">
+    <button onclick={toggleStartMenu} class="p-4 border-2 border-black relative">
+      Menu
+    </button>
+    {#if osState.startMenuOpen}
+      <StartMenu />
+    {/if}
+  </div>
   {#each osState.dockApps as app}
     <div class="dock-app whitespace-nowrap">
       {app.name}
     </div>
   {/each}
-  <button onclick={moveDock}>Move Dock</button>
 </div>
 
 <style>
   #taskbar {
-    bottom: 0;
+    bottom: 0.5rem;
     left: 50%;
     transform: translate3d(-50%, 0, 0);
     display: flex;
@@ -30,7 +34,7 @@
     align-items: center;
     &.dock-position-left {
       bottom: 50%;
-      left: 0;
+      left: 0.5rem;
       right: auto;
       transform: translate3d(0, 50%, 0);
       flex-direction: column;
@@ -38,7 +42,7 @@
     &.dock-position-right {
       bottom: 50%;
       left: auto;
-      right: 0;
+      right: 0.5rem;
       transform: translate3d(0, 50%, 0);
       flex-direction: column;
     }
