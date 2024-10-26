@@ -7,6 +7,10 @@ declare global {
 		icon?: string;
 		state: 'open' | 'minimized' | 'maximized';
 		id: string,
+		position: {
+			x: number,
+			y: number,
+		}
 	}
 	namespace App {
 		// interface Error {}

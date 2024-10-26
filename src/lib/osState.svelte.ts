@@ -20,11 +20,18 @@ export class OsStateClass {
       icon: 'github',
     },
   ];
+  zIndex = 1;
 
   desktopItems = [
     {
       title: 'trash',
-      path: '/trash'
+      path: '/trash',
+      id: crypto.randomUUID()
+    },
+    {
+      title: 'My Computer',
+      path: '/user',
+      id: crypto.randomUUID()
     },
   ];
 
@@ -38,6 +45,9 @@ export class OsStateClass {
   windows = $state<WindowPane[]>([]);
   addWindow(windowPane: WindowPane) {
     this.windows.push(windowPane);
+  }
+  closeWindow(id: string) {
+    this.windows = this.windows.filter(wind => wind.id !== id);
   }
 }
 

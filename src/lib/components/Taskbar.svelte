@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { osState } from "$lib/osState.svelte";
+	import { osState } from "../../lib/osState.svelte";
 	import StartMenu from "./StartMenu.svelte";
   
   function toggleStartMenu() {
@@ -32,19 +32,19 @@
     flex-direction: row;
     gap: 1rem;
     align-items: center;
-    &.dock-position-left {
-      bottom: 50%;
-      left: 0.5rem;
-      right: auto;
-      transform: translate3d(0, 50%, 0);
-      flex-direction: column;
-    }
-    &.dock-position-right {
-      bottom: 50%;
-      left: auto;
-      right: 0.5rem;
-      transform: translate3d(0, 50%, 0);
-      flex-direction: column;
-    }
+  }
+  #taskbar.dock-position-left {
+    bottom: 50%;
+    left: 0.5rem;
+    right: auto;
+    transform: translate3d(0, 50%, 0);
+    flex-direction: column;
+  }
+  #taskbar.dock-position-right {
+    bottom: 50%;
+    left: auto;
+    right: 0.5rem;
+    transform: translate3d(0, 50%, 0);
+    flex-direction: column;
   }
 </style>
