@@ -40,9 +40,11 @@
       path,
       icon: 'trash',
       state: 'open',
-      id,
-      x: 200,
-      y: 200
+      id: crypto.randomUUID(),
+      position: {
+        x: 200,
+        y: 200
+      }
     })
   }
 </script>

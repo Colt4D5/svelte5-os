@@ -41,6 +41,7 @@
 
   function handleMouseDown(e: MouseEvent) {
     const target = e.target as HTMLElement;
+    if (target.closest('.close-window')) return;
     console.log("id: ", id);
     if (!target.closest(`#window-${id}`)) return;
 
@@ -68,7 +69,7 @@
     <ul class="flex gap-2">
       <li class="w-4 h-4 rounded-full border-[1px] cursor-pointer bg-green-400"></li>
       <li class="w-4 h-4 rounded-full border-[1px] cursor-pointer bg-yellow-400"></li>
-      <li onclick={closeWindow} class="w-4 h-4 rounded-full border-[1px] cursor-pointer bg-red-400"></li>
+      <li onclick={closeWindow} class="close-window w-4 h-4 rounded-full border-[1px] cursor-pointer bg-red-400"></li>
     </ul>
   </div>
   <div class="window-content bg-white rounded px-2 py-4 shadow-inner" style={`min-height:${height}px;`}>

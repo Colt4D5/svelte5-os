@@ -16,7 +16,7 @@
 <div id="screen" class="h-lvh relative object-cover" style={`background: ${osState.wallpaper};`}>
 	{@render children()}
 
-	{#each osState.windows as appWindow}
+	{#each osState.windows as appWindow (appWindow.id)}
 		<Window name={appWindow.title} path={appWindow.path} id={appWindow.id} position={appWindow.position} ></Window>
 	{/each}
 	
